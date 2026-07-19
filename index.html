@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<title>MyDarkroom</title>
+
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#141312">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="MyDarkroom">
+<link rel="apple-touch-icon" href="icon-180.png">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="app">
+
+  <header class="topbar">
+    <div class="brand">MyDarkroom</div>
+    <div class="topbar-actions">
+      <button id="btnCompare" class="icon-btn" title="Salīdzināt ar oriģinālu">⇄</button>
+      <button id="btnReset" class="icon-btn" title="Atiestatīt">↺</button>
+      <button id="btnExport" class="icon-btn primary" title="Saglabāt">⇩</button>
+    </div>
+  </header>
+
+  <main class="stage">
+    <div id="canvasWrap" class="canvas-wrap">
+      <canvas id="mainCanvas"></canvas>
+      <div id="emptyState" class="empty-state">
+        <div class="empty-mark">◐</div>
+        <p>Nav ielādēta bilde</p>
+        <label class="file-btn">
+          Izvēlēties foto
+          <input type="file" id="fileInput" accept="image/*" hidden>
+        </label>
+      </div>
+    </div>
+  </main>
+
+  <div id="controlsToggle" class="controls-toggle">
+    <button id="tabAdjust" class="tab active">Regulēt</button>
+    <button id="tabPresets" class="tab">Preseti</button>
+    <label class="tab file-tab">
+      Foto
+      <input type="file" id="fileInput2" accept="image/*" hidden>
+    </label>
+  </div>
+
+  <section id="panelAdjust" class="panel">
+    <div class="slider-group">
+      <div class="group-title">Gaisma</div>
+      <div class="slider-row" data-key="exposure"><span class="lbl">Exposure</span><input type="range" min="-100" max="100" value="0"><span class="val">0</span></div>
+      <div class="slider-row" data-key="contrast"><span class="lbl">Contrast</span><input type="range" min="-100" max="100" value="0"><span class="val">0</span></div>
+      <div class="slider-row" data-key="highlights"><span class="lbl">Highlights</span><input type="range" min="-100" max="100" value="0"><span class="val">0</span></div>
+      <div class="slider-row" data-key="shadows"><span class="lbl">Shadows</span><input type="range" min="-100" max="100" value="0"><span class="val">0</span></div>
+      <div class="slider-row" data-key="whites"><span class="lbl">Whites</span><input type="range" min="-100" max="100" value="0"><span class="val">0</span></div>
+      <div class="slider-row" data-key="blacks"><span class="lbl">Blacks</span><input type="range" min="-100" max="100" value="0"><span class="val">0</span></div>
+    </div>
+
+    <div class="slider-group">
+      <div class="group-title">Krāsa</div>
+      <div class="slider-row" data-key="temp"><span class="lbl">Temperature</span><input type="range" min="-100" max="100" value="0"><span class="val">0</span></div>
+      <div class="slider-row" data-key="tint"><span class="lbl">Tint</span><input type="range" min="-100" max="100" value="0"><span class="val">0</span></div>
+      <div class="slider-row" data-key="vibrance"><span class="lbl">Vibrance</span><input type="range" min="-100" max="100" value="0"><span class="val">0</span></div>
+      <div class="slider-row" data-key="saturation"><span class="lbl">Saturation</span><input type="range" min="-100" max="100" value="0"><span class="val">0</span></div>
+    </div>
+
+    <div class="slider-group">
+      <div class="group-title">Detaļas</div>
+      <div class="slider-row" data-key="clarity"><span class="lbl">Clarity</span><input type="range" min="-100" max="100" value="0"><span class="val">0</span></div>
+      <div class="slider-row" data-key="sharpness"><span class="lbl">Sharpness</span><input type="range" min="0" max="100" value="0"><span class="val">0</span></div>
+      <div class="slider-row" data-key="vignette"><span class="lbl">Vignette</span><input type="range" min="-100" max="100" value="0"><span class="val">0</span></div>
+      <div class="slider-row" data-key="grain"><span class="lbl">Grain</span><input type="range" min="0" max="100" value="0"><span class="val">0</span></div>
+    </div>
+  </section>
+
+  <section id="panelPresets" class="panel hidden">
+    <div class="preset-save-row">
+      <input type="text" id="presetName" placeholder="Preseta nosaukums">
+      <button id="btnSavePreset">Saglabāt preset</button>
+    </div>
+    <div id="presetList" class="preset-list"></div>
+  </section>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
